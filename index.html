@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        body{
+            padding: 0px;
+            margin: 0px;
+        }
+        #con{
+            width: 100%;
+            height: 700px;
+            background-image: linear-gradient(rgba(81, 3, 81, 0.738),rgba(114, 114, 4, 0.679),rgba(155, 102, 3, 0.753));
+            opacity: 0.5;
+            position: fixed;
+            z-index: 2;
+        }
+        #container{
+            width: 400px;
+            height: 500px;
+            background-color: rgba(4, 96, 4, 0.671);
+            opacity: 1;
+            border-radius: 20px;
+            position: fixed;
+            top: 180px;
+            left: 550px;
+            box-shadow: 10px 10px 5px black;
+        }
+        #result{
+            position: absolute;
+            width: 80%;
+            height: 60px;
+            font-size: 40px;
+            text-indent: 10px;
+            padding-top: 15px;
+            border-radius: 10px;
+            background-color: rgb(92, 99, 99);
+            color: white;
+            border: none;
+            left: 9%;
+            top: 8%;
+            z-index: 1;
+            box-shadow: 10px 10px 5px black;
+            border: 3px solid rgb(4, 4, 4);
+        }
+        #a{
+            position: relative;
+            width: 50px;
+            height: 50px;
+            top: 110px;
+            margin-left: 37px;
+            font-size: 24px;
+            background-color: rgb(110, 10, 110);
+            color: white;
+            border-radius: 10px;
+            border: none;
+            z-index: 1;
+            opacity: 0.7;
+            box-shadow: 5px 5px 10px black;
+            transition: all 1s;
+        }
+        #a:hover{
+            color:  rgb(110, 10, 110);
+            background-color: white;
+            opacity: 1;
+            box-shadow: 5px 5px 10px rgb(110, 10, 110),-5px -5px 10px rgb(110, 10, 110),-5px 5px 10px rgb(110, 10, 110),5px -5px 10px rgb(110, 10, 110);
+        }
+        #c{
+            position: relative;
+            width: 70px;
+            height: 50px;
+            top: 105px;
+            margin-left: 20px;
+            font-size: 10px;
+            background-color: rgb(88, 56, 0);
+            color: white;
+            border-radius: 10px;
+            border: none;
+            opacity: 0.7;
+            box-shadow: 10px 10px 10px black;
+            transition: all 1s;
+        }
+        #c:hover{
+            background-color: white;
+            color:rgb(88, 56, 0);
+            opacity: 1;
+            box-shadow: 5px 5px 10px rgb(88, 56, 0),-5px -5px 10px rgb(88, 56, 0),-5px 5px 10px rgb(88, 56, 0),5px -5px 10px rgb(88, 56, 0);
+        }
+        #b{
+            position: relative;
+            width: 70px;
+            height: 50px;
+            top: 110px;
+            margin-left: 20px;
+            font-size: 24px;
+            background-color: rgb(176, 104, 17);
+            color: white;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 10px 10px 5px black;
+            opacity: 0.7;
+            transition: all 1s;
+        }
+        #b:hover{
+            color:  rgb(176, 104, 17);
+            background-color: white;
+            opacity: 1;
+            box-shadow: 5px 5px 10px rgb(176, 104, 17),-5px -5px 10px rgb(176, 104, 17),-5px 5px 10px rgb(176, 104, 17),5px -5px 10px rgb(176, 104, 17);
+        }
+        #cal{
+            position: fixed;
+            font-size: 160px;
+            color: white;
+            top: 300px;
+            z-index: 3;
+            left: 240px;
+            opacity: 0.3;
+        }
+        #ulator{
+            font-size: 140px;
+            position:fixed;
+            top: 330px;
+            color: white;
+            opacity: 5;
+            z-index: -1;
+        }
+        .a:hover{
+            background-color: red;
+            color: white;
+        }
+        #t{
+            position: fixed;
+            font-size: 12px;
+            z-index: 1;
+            top: 220px;
+            left: 600px;
+            color: white;
+            text-shadow: 2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black;
+            background-color: transparent;
+        }
+        #d{
+            position: fixed;
+            font-size: 12px;
+            z-index: 1;
+            top: 220px;
+            left: 830px;
+            color: white;
+            text-shadow: 2px 2px 2px black,-2px -2px 2px black,-2px 2px 2px black,2px -2px 2px black;
+            background-color: transparent;
+        }
+        #cancle{
+            position: relative;
+            width: 140px;
+            height: 50px;
+            top: 110px;
+            margin-left: 37px;
+            font-size: 24px;
+            background-color: red;
+            color: white;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 10px 10px 5px black;
+            opacity: 0.9;
+        }
+        #cancle:hover{
+            background-color: white;
+            color: red;
+        }
+    </style>
+</head>
+<body onload="clock()">
+    <div id="con">
+    <h1 id="t"></h1>
+    <h1 id="d"></h1>
+    <h1 id="cal">Calc</h1>
+    <div id="container">
+        <form name="cform">
+            <input id="result" type="text" name="answer">
+            <br><br>
+            <input id="a" class="a" type="button" value="1" onclick="cform.answer.value +='1'">
+            <input id="a" class="a" type="button" value="2" onclick="cform.answer.value +='2'">
+            <input id="a" class="a" type="button" value="3" onclick="cform.answer.value +='3'">
+            <input id="a" class="a" type="button" value="+" onclick="cform.answer.value +='+'">
+            <br><br>
+            <input id="a" type="button" value="4" onclick="cform.answer.value +='4'">
+            <input id="a" type="button" value="5" onclick="cform.answer.value +='5'">
+            <input id="a" type="button" value="6" onclick="cform.answer.value +='6'">
+            <input id="a" type="button" value="-" onclick="cform.answer.value +='-'">
+            <br><br>
+            <input id="a" type="button" value="7" onclick="cform.answer.value +='7'">
+            <input id="a" type="button" value="8" onclick="cform.answer.value +='8'">
+            <input id="a" type="button" value="9" onclick="cform.answer.value +='9'">
+            <input id="a" type="button" value="*" onclick="cform.answer.value +='*'">
+            <br><br>
+            <input id="a" type="button" value="/" onclick="cform.answer.value +='/'">
+            <input id="a" type="button" value="0" onclick="cform.answer.value +='0'">
+            <input id="a" type="button" value="." onclick="cform.answer.value +='.'">
+            <input id="a" type="button" value="%" onclick="cform.answer.value +='%'">
+            <br><br>
+            <input id="cancle" type="button" value="Cancle" onclick="cform.answer.value =''">
+            <input id="c" type="button" value="Back Sopace" onclick="cform.answer.value=Math.floor((cform.answer.value)/10)">
+            <input id="b" type="button" value="=" onclick="cform.answer.value =eval(cform.answer.value)">
+            <h1 id="ulator">ulator</h1>
+        </form>
+    </div>
+    </div>
+    <script>
+        function clock()
+        {
+            var date=new Date()
+            var hh=date.getHours()
+            var mm=date.getMinutes()
+            var ss=date.getSeconds()
+            var dd=date.getDate()
+            var mo=date.getMonth()
+            var yy=date.getFullYear()
+            var day=date.getDay()
+            var am_pm="AM"
+            if(hh>=12)
+            {
+                am_pm="PM"
+                if(hh>=13)
+                {
+                    hh-=12;
+                }
+            }
+            if(hh==12)
+            {
+                hh=0;
+            }
+            if(mo==0)
+            {
+                mo="Jan"
+            }
+            else if(mo==1)
+            {
+                mo="Feb"
+            }
+            else if(mo==1)
+            {
+                mo="Mar"
+            }
+            else if(mo==1)
+            {
+                mo="Apr"
+            }
+            else if(mo==1)
+            {
+                mo="May"
+            }
+            else if(mo==1)
+            {
+                mo="Jun"
+            }
+            else if(mo==1)
+            {
+                mo="July"
+            }
+            else if(mo==1)
+            {
+                mo="Aug"
+            }
+            else if(mo==1)
+            {
+                mo="Sep"
+            }
+            else if(mo==1)
+            {
+                mo="Oct"
+            }
+            else if(mo==1)
+            {
+                mo="Nov"
+            }
+            else
+            {
+                mo="Dec"
+            }
+            if(day==0)
+            {
+                day="Sunday"
+            }
+            else if(day==1)
+            {
+                day="Monday"
+            }
+            else if(day==2)
+            {
+                day="Tuesday"
+            }
+            else if(day==3)
+            {
+                day="Wednesday"
+            }
+            else if(day==4)
+            {
+                day="Thursday"
+            }
+            else if(day==5)
+            {
+                day="Friday"
+            }
+            else if(day==6)
+            {   
+                day="Saturday"
+            }
+            var time=hh+":"+mm+":"+ss+" "+am_pm
+            document.getElementById("t").innerHTML=time
+            var date=dd+"/"+mo+"/"+yy
+            document.getElementById("d").innerHTML=date
+            var refreshTime=setTimeout(function(){clock()},1000)
+        }
+    </script>
+</body>
+</html>
